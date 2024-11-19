@@ -14,7 +14,10 @@ class NotsviewsBody extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
-          CustmAppBar(),
+          CustmAppBar(
+            title: 'Notes',
+            icon: Icons.search,
+          ),
           SizedBox(
             height: 50,
           ),
