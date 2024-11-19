@@ -8,6 +8,7 @@ class NotsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
