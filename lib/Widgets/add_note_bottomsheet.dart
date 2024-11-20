@@ -10,20 +10,23 @@ class Custmbottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteState>(
-      listener: (context, state) {
-        if (state is AddNoteFailure) {
-          print('failure${state.errorMessage.toString()}');
-        }
-        if (state is AddNoteSuccess) {
-          Navigator.pop(context);
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            child: AddNoteForm());
-      },
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state is AddNoteFailure) {
+            print('failure${state.errorMessage.toString()}');
+          }
+          if (state is AddNoteSuccess) {
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              child: AddNoteForm());
+        },
+      ),
     );
   }
 }
